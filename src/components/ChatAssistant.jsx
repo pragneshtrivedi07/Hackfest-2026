@@ -82,7 +82,7 @@ const ChatAssistant = () => {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide bg-[#0a0f2c] bg-opacity-95">
-            {messages.map((msg, idx) => (
+            {(messages || []).map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user' 
@@ -110,7 +110,7 @@ const ChatAssistant = () => {
             {/* Quick Replies */}
             {messages.length < 3 && (
               <div className="flex flex-wrap gap-2 mb-3">
-                {quickReplies.map(qr => (
+                {(quickReplies || []).map(qr => (
                   <button 
                     key={qr} 
                     onClick={() => handleSend(qr)}

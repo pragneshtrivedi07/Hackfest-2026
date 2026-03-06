@@ -24,7 +24,7 @@ const Select = ({ label, options, ...props }) => (
       {...props}
       className="bg-[var(--color-navy-primary)] border border-gray-700 focus:border-[var(--color-gold-primary)] rounded-lg px-3 py-2 text-sm text-white outline-none transition-colors"
     >
-      {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+      {(options || []).map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
     </select>
   </div>
 );
@@ -157,7 +157,7 @@ const ParticipantsSection = () => {
           <div className="space-y-4">
             <Select label="Year to View" value={manageYear} onChange={e => setManageYear(+e.target.value)} options={yearOptions} />
             <div className="max-h-[300px] overflow-y-auto space-y-2 pr-1 scrollbar-hide">
-              {teamsList.length === 0 ? (
+              {!Array.isArray(teamsList) || teamsList.length === 0 ? (
                 <p className="text-center text-gray-500 text-sm py-4 italic">No teams registered for this year.</p>
               ) : (
                 teamsList.map(t => (

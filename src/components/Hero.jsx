@@ -59,7 +59,7 @@ const Hero = ({ phase, nextUnlock }) => {
 
         {/* Stats Chips */}
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          {['3 Days', '3 Levels', '3 Problem Statements'].map((stat, i) => (
+          {(['3 Days', '3 Levels', '3 Problem Statements'] || []).map((stat, i) => (
             <div key={i} className="bg-[var(--color-navy-soft)]/50 backdrop-blur-sm border border-[var(--color-gold-primary)]/20 px-6 py-2 rounded-full text-[var(--color-gold-pale)] font-medium text-sm sm:text-base card-shadow gold-glow transition-all">
               {stat}
             </div>

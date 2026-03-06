@@ -106,7 +106,7 @@ const ProblemStatements = ({ phase, nextUnlock }) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {statements.map((ps) => {
+          {(statements || []).map((ps) => {
             const unlocked = isUnlocked(ps.day);
 
             if (!unlocked) {
@@ -147,19 +147,19 @@ const ProblemStatements = ({ phase, nextUnlock }) => {
                   <p className="text-gray-300 text-sm font-medium mb-4">Domain: <span className="text-[var(--color-gold-light)]">{ps.domain}</span></p>
                   
                   <div className="flex flex-wrap gap-2">
-                    {ps.tech.map(t => (
+                    {(ps.tech || []).map(t => (
                       <span key={t} className="bg-white/5 text-gray-300 text-xs px-2 py-1 rounded border border-white/10">{t}</span>
                     ))}
                   </div>
                 </div>
 
                 <div className="p-6 flex-grow flex flex-col gap-3">
-                  {[
+                  {([
                     { id: 'definition', title: 'Problem Definition', content: ps.definition },
                     { id: 'input', title: 'Expected Input', content: ps.input },
                     { id: 'output', title: 'Expected Output', content: ps.output },
                     { id: 'scalability', title: 'Scalability Hook', content: ps.scalability }
-                  ].map((section) => (
+                  ] || []).map((section) => (
                     <div key={section.id} className="border border-gray-700 rounded-lg overflow-hidden">
                       <button 
                         onClick={() => toggleAccordion(ps.id, section.id)}

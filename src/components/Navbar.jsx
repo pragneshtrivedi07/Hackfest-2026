@@ -49,7 +49,7 @@ const Navbar = ({ phase }) => {
               >
                 Register
               </Link>
-              {navLinks.map((link) => (
+              {(navLinks || []).map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollTo(link.sectionId)}
@@ -88,7 +88,7 @@ const Navbar = ({ phase }) => {
               >
                 Register
               </Link>
-              {navLinks.map((link) => (
+              {(navLinks || []).map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollTo(link.sectionId)}

@@ -185,7 +185,7 @@ const RegistrationForm = () => {
               </h3>
               <p className="text-xs text-gray-500 mb-4">Include the leader as one of the 4 members. <span className="text-amber-400">At least 1 female participant mandatory.</span></p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {members.map((m, i) => (
+                {(members || []).map((m, i) => (
                   <Input
                     key={i}
                     label={`Member ${i + 1}${i === 0 ? ' (Leader)' : ''}`}
