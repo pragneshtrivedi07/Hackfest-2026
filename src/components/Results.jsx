@@ -13,7 +13,7 @@ const Results = ({ phase }) => {
     
     const fetchResults = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/results');
+        const response = await fetch('/api/results');
         const data = await response.json();
         if (!data.locked) {
           setResultsData(data);
