@@ -11,7 +11,7 @@ const Teams = () => {
       setLoading(true);
       try {
         const fetchYear = async (year) => {
-          const response = await fetch(`/api/judges?year=${year}`);
+          const response = await fetch(`/api/teams?year=${year}`);
           return response.json();
         };
 

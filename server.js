@@ -43,6 +43,9 @@ try {
   db.exec(`ALTER TABLE teams ADD COLUMN leader_phone TEXT;`);
 } catch(e) { /* column already exists */ }
 
+// Health Check
+app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 // Calculate Phase
