@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-primary: #09090b; /* Very Dark Zinc */
+  --color-navy-mid: #18181b; /* Dark Zinc */
+  --color-navy-soft: #27272a; /* Zinc */
+  --color-gold-primary: #2F8D46; /* GeeksForGeeks Green */
+  --color-gold-light: #4ADE80; /* Light Green */
+  --color-gold-pale: #ECFDF5; /* Pale Green */
+  --color-off-white: #fafafa;
+  --color-silver: #e4e4e7;
+  --color-day1: #2E7D32;
+  --color-day2: #1565C0;
+  --color-day3: #6A1B9A;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-navy-primary);
+    color: var(--color-off-white);
+    font-family: var(--font-inter);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .gold-glow:hover {
+    box-shadow: 0 0 0 2px var(--color-gold-primary);
+  }
+  
+  .card-shadow {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, var(--color-navy-primary) 0%, var(--color-navy-mid) 100%);
+  }
+
+  /* Minimal scrollbar for text areas/cards */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(47, 141, 70, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(47, 141, 70, 0); }
+  100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(47, 141, 70, 0); }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s ease-out forwards;
+}
