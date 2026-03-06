@@ -212,7 +212,7 @@ const ParticipantsSection = () => {
                 </button>
               </p>
               <div className="space-y-2">
-                {members.map((m, i) => (
+                {(members || []).map((m, i) => (
                   <div key={i} className="flex gap-2">
                     <Input value={m} onChange={e => setMember(i, e.target.value)} placeholder={`Member ${i + 1} name`} />
                     {members.length > 1 && (

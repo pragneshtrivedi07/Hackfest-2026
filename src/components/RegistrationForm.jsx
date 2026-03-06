@@ -76,7 +76,7 @@ const RegistrationForm = () => {
     setError('');
 
     // Validate 4 members
-    const filledMembers = members.filter(m => m.trim());
+    const filledMembers = (members || []).filter(m => m.trim());
     if (filledMembers.length < 4) {
       setError('Please fill in all 4 team member names.');
       return;

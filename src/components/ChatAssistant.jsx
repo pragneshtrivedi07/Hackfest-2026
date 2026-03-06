@@ -27,7 +27,7 @@ const ChatAssistant = () => {
     setIsLoading(true);
 
     try {
-      const chatMessages = [...messages.filter(m => m.role !== 'system'), userMessage];
+      const chatMessages = [...(messages || []).filter(m => m.role !== 'system'), userMessage];
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
