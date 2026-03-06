@@ -1,7 +1,10 @@
+console.log('[DEBUG] main.jsx execution started');
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+console.log('[DEBUG] Styles imported');
 import App from './App.jsx'
+console.log('[DEBUG] App imported');
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -23,10 +26,19 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-createRoot(document.getElementById('root')).render(
+console.log('[DEBUG] Attempting to createRoot');
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  console.error('[DEBUG] ROOT ELEMENT NOT FOUND!');
+}
+const root = createRoot(rootElement);
+console.log('[DEBUG] root created, rendering...');
+
+root.render(
   <StrictMode>
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
   </StrictMode>,
 )
+console.log('[DEBUG] render() called');
