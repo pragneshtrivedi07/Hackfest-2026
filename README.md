@@ -16,7 +16,7 @@ npm install
 
 # 2. Create a .env file in the root directory and add the following:
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
-ADMIN_PASSWORD=UDAAN2026@ADMIN
+ADMIN_PASSWORD=
 PORT=3001
 
 # 3. Start the Backend API (opens on port 3001)
