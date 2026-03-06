@@ -12,6 +12,7 @@ const Teams = () => {
       try {
         const fetchYear = async (year) => {
           const response = await fetch(`/api/teams?year=${year}`);
+          if (!response.ok) return [];
           return response.json();
         };
 
@@ -46,11 +47,10 @@ const Teams = () => {
               <button
                 key={year}
                 onClick={() => setActiveTab(year)}
-                className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${
-                  activeTab === year 
-                    ? 'bg-[var(--color-gold-primary)] text-[var(--color-navy-primary)] shadow-[0_0_15px_rgba(47,141,70,0.3)]' 
+                className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all duration-300 ${activeTab === year
+                    ? 'bg-[var(--color-gold-primary)] text-[var(--color-navy-primary)] shadow-[0_0_15px_rgba(47,141,70,0.3)]'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
+                  }`}
               >
                 {year}{year === 1 ? 'st' : year === 2 ? 'nd' : 'rd'} Year
               </button>
@@ -82,7 +82,7 @@ const Teams = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teams.map((team, idx) => (
                 <div key={idx} className="bg-gradient-to-br from-[var(--color-navy-primary)] to-[#101010] rounded-xl border border-[var(--color-gold-primary)]/10 hover:border-[var(--color-gold-primary)]/40 transition-all duration-300 hover:-translate-y-1 card-shadow group overflow-hidden">
-                  
+
                   {/* Card Header */}
                   <div className="p-5 border-b border-[var(--color-gold-primary)]/10 bg-[var(--color-gold-primary)]/5">
                     <div className="flex justify-between items-start">
@@ -124,14 +124,14 @@ const Teams = () => {
                       </div>
                     </div>
                   )}
-                  
+
                   {/* Participants List */}
                   <div className="p-4">
                     <p className="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-3 flex items-center gap-2">
                       <Users className="w-3 h-3" /> Members
                     </p>
                     <div className="space-y-2">
-                      {team.participants.map((participant, pIdx) => (
+                      {(team.participants || []).map((participant, pIdx) => (
                         <div key={pIdx} className="flex items-center text-gray-300 text-sm">
                           <div className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center mr-3 border border-white/10 shrink-0 text-[10px] font-bold text-gray-500">
                             {pIdx + 1}

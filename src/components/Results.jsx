@@ -14,6 +14,7 @@ const Results = ({ phase }) => {
     const fetchResults = async () => {
       try {
         const response = await fetch('/api/results');
+        if (!response.ok) throw new Error('API Error');
         const data = await response.json();
         if (!data.locked) {
           setResultsData(data);

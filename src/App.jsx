@@ -18,6 +18,7 @@ const MainEvent = () => {
     const fetchPhase = async () => {
       try {
         const response = await fetch('/api/phase');
+        if (!response.ok) throw new Error('API Error');
         const data = await response.json();
         setPhaseData(data);
       } catch (error) {

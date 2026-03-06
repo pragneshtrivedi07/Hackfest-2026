@@ -12,6 +12,7 @@ const Judges = () => {
       try {
         const fetchYear = async (year) => {
           const response = await fetch(`/api/judges?year=${year}`);
+          if (!response.ok) return [];
           return response.json();
         };
 
@@ -30,8 +31,11 @@ const Judges = () => {
   const judges = allJudges[activeTab];
 
   const getInitials = (name) => {
-    if (!name) return '?';
-    return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    if (!name || typeof name !== 'string') return '?';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0][0]?.toUpperCase() || '?';
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
   };
 
   return (
