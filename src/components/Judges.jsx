@@ -70,7 +70,7 @@ const Judges = () => {
         <div key={activeTab} className="animate-fade-in">
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 tracking-widest text-[#FFF]">Loading...</div>
-          ) : judges.length === 0 ? (
+          ) : !Array.isArray(judges) || judges.length === 0 ? (
             <div className="text-center py-20 bg-[var(--color-navy-mid)] rounded-2xl border border-dashed border-gray-700">
               <Award className="w-16 h-16 text-gray-600 mx-auto mb-4 animate-pulse" />
               <h3 className="text-xl font-medium text-gray-400 mb-2">Judges will be announced soon</h3>

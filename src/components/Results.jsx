@@ -86,7 +86,7 @@ const Results = ({ phase }) => {
                 </div>
                 
                 <div className="p-6 space-y-4">
-                  {column.data.length === 0 ? (
+                  {!column.data || !Array.isArray(column.data) || column.data.length === 0 ? (
                     <p className="text-center text-gray-500 py-8">Results pending...</p>
                   ) : (
                     column.data.map((result, idx) => (

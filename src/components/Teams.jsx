@@ -72,7 +72,7 @@ const Teams = () => {
                 </div>
               ))}
             </div>
-          ) : teams.length === 0 ? (
+          ) : !Array.isArray(teams) || teams.length === 0 ? (
             <div className="text-center py-20 bg-[var(--color-navy-primary)] rounded-2xl border border-dashed border-gray-700">
               <Users className="w-16 h-16 text-gray-600 mx-auto mb-4 animate-float" />
               <h3 className="text-xl font-medium text-gray-400 mb-2">Teams will be announced soon</h3>
